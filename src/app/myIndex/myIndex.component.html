@@ -1,0 +1,69 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+    <mat-toolbar class="topToolbar">
+
+      <mat-toolbar-row class="row1">
+        <span>
+          潮盘
+        </span>
+      </mat-toolbar-row>
+      <mat-toolbar-row class="row2">
+        <span>
+          2019-2-16
+        </span>
+      </mat-toolbar-row>
+      <!--<span class="spacer">-->
+      <!--</span>-->
+      <!--<span>-->
+      <!--<mat-icon class="menuIcon">menu</mat-icon>-->
+      <!--</span>-->
+    </mat-toolbar>
+    <div class="productList">
+      <div *ngFor="let product of options; let i = index" class="product">
+        <div class="productName">
+          <span class="product-row1">
+              {{product.model}}
+            </span>
+          <span class="product-row2">
+              {{product.color}}
+            </span>
+        </div>
+        <div class="minichart">
+          <!--<chart [options]="product.option" (load)="saveInstance($event.context, product)"></chart>-->
+          <chart [options]="product.option"></chart>
+
+        </div>
+
+        <div class="price">
+          <span class="price-row1">$ {{product.endPrice}}</span>
+
+          <button mat-raised-button color="warn" class="price-row2" *ngIf="product.change >= 0">+ {{product.change}}</button>
+          <button mat-raised-button color="warn" class="price-row2 negative" *ngIf="product.change < 0">{{product.change}}</button>
+
+        </div>
+          <!--<div class="title">-->
+            <!--<div class="productName">-->
+              <!--&lt;!&ndash;{{product.productName}}&ndash;&gt;-->
+              <!--<mat-form-field>-->
+                <!--&lt;!&ndash;<span matPrefix>尺码: &nbsp;</span>&ndash;&gt;-->
+                <!--<mat-select placeholder="" [(value)]="product.selectedSize" (selectionChange)="redraw(product, i, group.value)">-->
+                  <!--<mat-option *ngFor="let sku of product.skus" [value]="sku.index">-->
+                    <!--{{sku.description}}-->
+                  <!--</mat-option>-->
+                <!--</mat-select>-->
+              <!--</mat-form-field>-->
+            <!--</div>-->
+            <!--<div class="grades"></div>-->
+            <!--<div class="more" (click)="blank()">-->
+              <!--<mat-icon>bar_chart</mat-icon>详细-->
+            <!--</div>-->
+            <!--<div class="date">-->
+              <!--<mat-button-toggle-group appearance="legacy" #group="matButtonToggleGroup" [value]="0" class="btnToggleDate">-->
+                <!--<mat-button-toggle *ngFor="let dateRange of dates" [value]="dateRange.index" (change)="redraw(product, i, group.value)">{{dateRange.text}}</mat-button-toggle>-->
+              <!--</mat-button-toggle-group>-->
+            <!--</div>-->
+          <!--</div>-->
+      </div>
+    </div>
+
+

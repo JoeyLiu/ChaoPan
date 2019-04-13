@@ -1,0 +1,67 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav mode="over">
+    <div class="nav-title" (click)="sidenav.toggle()"><mat-icon>list</mat-icon><div class="title-text">系列 & 款式</div></div>
+    <p></p>
+    <div *ngFor="let brand of category;">
+      <button mat-button class="category" (click)="closeSideNav(brand)">{{brand}}</button>
+      <p></p>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="topToolbar">
+      <span>
+        <mat-icon (click)="sidenav.toggle()" class="menuIcon">menu</mat-icon>
+      </span>
+      <span class="spacer">
+      </span>
+      <span class="buildinfo">
+      Build20190403
+      </span>
+    </mat-toolbar>
+    <div class="trend_chart">
+      <div *ngFor="let product of options; let i = index" class="charts">
+        <div *ngIf="product.brand === selectedBrand || selectedBrand === '全部'">
+          <mat-toolbar class="toolbar">
+            <div class="favorite" (click)="favor(product)">
+              <!--<div *ngIf="!product.favored">+ 关注</div>-->
+              <!--<div *ngIf="product.favored">- 取关</div>-->
+              <mat-icon class="grade" *ngIf="!product.favored">star</mat-icon>
+              <mat-icon class="ungrade" *ngIf="product.favored">star_border</mat-icon>
+            </div>
+            <span class="text">
+              <div class="model">{{product.model}}</div>
+              <div class="color">{{product.color}}</div>
+            </span>
+          </mat-toolbar>
+          <div class="title">
+            <div class="productName">
+              <!--{{product.productName}}-->
+              <mat-form-field>
+                <!--<span matPrefix>尺码: &nbsp;</span>-->
+                <mat-select placeholder="" [(value)]="product.selectedSize" (selectionChange)="redraw(product, i, group.value)">
+                  <mat-option *ngFor="let sku of product.skus" [value]="sku.index">
+                    {{sku.description}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="grades"></div>
+            <div class="more" (click)="blank()">
+              <mat-icon>bar_chart</mat-icon>详细
+            </div>
+            <div class="date">
+              <mat-button-toggle-group appearance="legacy" #group="matButtonToggleGroup" [value]="0" class="btnToggleDate">
+                <mat-button-toggle *ngFor="let dateRange of dates" [value]="dateRange.index" (change)="redraw(product, i, group.value)">{{dateRange.text}}</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+          <mat-progress-bar mode="indeterminate" *ngIf="currentChartIndex === i"></mat-progress-bar>
+          <chart [options]="product.option" (load)="saveInstance($event.context, product)"></chart>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

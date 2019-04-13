@@ -1,0 +1,209 @@
+.topToolbar {
+  width: 100%;
+  padding: 5px 0;
+  color: white;
+  background-color: #3c3c3c;
+}
+
+.topToolbar .row1 {
+  height: 32px;
+  font-size: 24px;
+}
+
+.topToolbar .row2 {
+  color: lightgrey;
+  height: 28px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.product {
+  padding-left: 4%;
+  padding-right: 4%;
+  width: 92%;
+  float: left;
+  background-color: black;
+  border-bottom-style: dashed;
+  border-bottom-color: lightgrey;
+  border-bottom-width: 1px;
+  display: flex;
+}
+
+.price {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: right;
+  width: 20%;
+}
+
+.price .price-row1 {
+  padding-right: 3px;
+  padding-top: 8px;
+}
+
+.price .price-row2 {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: right;
+  height: 24px;
+  margin-bottom: 8px;
+  line-height: 24px;
+}
+
+.price .negative {
+  background-color: green;
+}
+
+.minichart {
+  width: 28%;
+  margin-right: 5%;
+  display: flex;
+  align-items: center;
+}
+
+
+@media only screen and (max-width: 450px){
+  /* 手机 */
+  /deep/ svg.highcharts-root {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  /deep/ div.highcharts-container {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .title {
+    float: left;
+    width: 100%;
+    margin: 0px;
+    display: inline-block;
+  }
+  .charts {
+    margin: 5px;
+    /*margin-bottom: 5px;*/
+    /*margin-top: 5px;*/
+    /*width: 100%;*/
+  }
+  .title .date {
+    margin-left: 0px;
+    /*position: center;*/
+    margin-top: 0px;
+  }
+  .title .size {
+    float: left;
+    width: 23%;
+    margin-left: 1%;
+  }
+  .title .btn_refresh {
+    margin-right: 1%;
+    margin-left: 0%;
+    width: 20%;
+  }
+  /deep/ .title .mat-form-field {
+    width: 100% !important;
+    font-size: 10px;
+  }
+  .btnView {
+    line-height: 48px;
+  }
+  /deep/ .title .mat-button-toggle {
+    width: 16% !important;
+      background-color: #009290ad !important;
+  }
+  /deep/ .title .mat-button-toggle-group {
+    width: 100% !important;
+    /*background-color: #939393 !important;*/
+  }
+  /deep/ .title .mat-button-toggle-checked {
+    color: white !important;
+    background-color: #009290 !important;
+  }
+  .btnToggleDate {
+    border-radius: 0px;
+  }
+  .productName {
+
+    line-height: 48px;
+    font-size: 16px;
+    font-weight: 500;
+
+    color: white;
+    width: 40%;
+    margin-right: 5%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-row1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 18px;
+  }
+  .product-row2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: 200;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 12px;
+  }
+  .toolbar {
+    font-size: 12px;
+    /*max-width: 300px;*/
+    color: #656565;
+  }
+  .menuIcon {
+    line-height: 40px;
+  }
+}
+
+@media only screen and (min-width: 451px) {
+  /deep/ svg.highcharts-root {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  /deep/ div.highcharts-container {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .title .date {
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*width: 33%;*/
+    /*margin: auto;*/
+    position: absolute;
+    z-index: 1;
+    margin-top: 53px;
+    /*margin-left: 752px;*/
+  }
+  .productName {
+    line-height: 48px;
+    /*margin-left: 5%;*/
+    /*margin-right: 5%;*/
+    font-size: 20px;
+    color: #00000099;
+    width: 75%;
+    text-align: left;
+    font-weight: 500;
+    padding: 0 16px;
+  }
+  .toolbar {
+    font-size: 20px;
+    color: #656565;
+  }
+  .menuIcon {
+    line-height: 40px;
+  }
+}
