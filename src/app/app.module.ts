@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { ChartModule } from 'angular2-highcharts';
+import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import {MatFormFieldModule, MatNativeDateModule} from '@angular/material';
 import { MatSelectModule} from '@angular/material';
 import { MatSidenavModule} from '@angular/material';
@@ -26,6 +27,9 @@ import {MyIndexComponent} from './myIndex/myIndex.component';
 
 declare let require: any;
 
+export function highchartsFactory() {
+  return require('highcharts');
+}
 
 @NgModule({
   declarations: [
@@ -35,7 +39,8 @@ declare let require: any;
   ],
   imports: [
     BrowserModule,
-    ChartModule.forRoot(require('highcharts')),
+    ChartModule,
+    // ChartModule.forRoot(require('highcharts')),
     MatFormFieldModule,
     MatSelectModule,
     BrowserAnimationsModule,
@@ -54,7 +59,12 @@ declare let require: any;
     MatSidenavModule,
     MatTabsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HighchartsStatic,
+      useFactory: highchartsFactory
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
